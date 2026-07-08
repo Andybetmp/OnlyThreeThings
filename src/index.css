@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-error: #ba1a1a;
+  --color-secondary-fixed: #ffdbd1;
+  --color-on-tertiary-fixed-variant: #1a4e50;
+  --color-secondary: #8d4d3b;
+  --color-on-secondary-fixed-variant: #703626;
+  --color-surface-variant: #e4e2de;
+  --color-secondary-container: #fdaa93;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #95c7c9;
+  --color-error-container: #ffdad6;
+  --color-on-background: #1b1c1a;
+  --color-surface: #fbf9f5;
+  --color-on-surface: #1b1c1a;
+  --color-tertiary-fixed-dim: #9ecfd1;
+  --color-on-secondary-fixed: #390c02;
+  --color-outline-variant: #c6c7be;
+  --color-outline: #767870;
+  --color-surface-container-low: #f5f3ef;
+  --color-surface-container-highest: #e4e2de;
+  --color-secondary-fixed-dim: #ffb5a1;
+  --color-on-secondary: #ffffff;
+  --color-on-tertiary-fixed: #002021;
+  --color-on-primary-fixed-variant: #414939;
+  --color-on-secondary-container: #783c2b;
+  --color-surface-tint: #596150;
+  --color-inverse-surface: #30312e;
+  --color-on-primary-container: #474f3f;
+  --color-on-primary: #ffffff;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+  --color-primary-container: #b8c1ac;
+  --color-inverse-on-surface: #f2f0ed;
+  --color-on-tertiary-container: #225456;
+  --color-surface-container: #efeeea;
+  --color-tertiary-fixed: #b9ecee;
+  --color-surface-dim: #dbdad6;
+  --color-tertiary: #356668;
+  --color-on-surface-variant: #454841;
+  --color-primary-fixed: #dde6d0;
+  --color-inverse-primary: #c1cab4;
+  --color-primary: #596150;
+  --color-surface-container-lowest: #ffffff;
+  --color-primary-fixed-dim: #c1cab4;
+  --color-surface-bright: #fbf9f5;
+  --color-background: #fbf9f5;
+  --color-surface-container-high: #eae8e4;
+  --color-on-primary-fixed: #161e10;
+
+  --radius-DEFAULT: 1rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+  --radius-full: 9999px;
+
+  --spacing-gutter: 24px;
+  --spacing-base: 8px;
+  --spacing-md: 24px;
+  --spacing-sm: 12px;
+  --spacing-xl: 80px;
+  --spacing-xs: 4px;
+  --spacing-lg: 48px;
+  --spacing-container-max: 800px;
+
+  --font-body-lg: "Quicksand", sans-serif;
+  --font-body-md: "Quicksand", sans-serif;
+  --font-headline-lg-mobile: "Quicksand", sans-serif;
+  --font-headline-lg: "Quicksand", sans-serif;
+  --font-display: "Quicksand", sans-serif;
+  --font-label-lg: "Quicksand", sans-serif;
+  --font-headline-md: "Quicksand", sans-serif;
+  --font-label-md: "Quicksand", sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    font-family: var(--font-body-md);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+.shadow-ambient {
+  box-shadow: 0 20px 40px -10px rgba(89, 97, 80, 0.05);
+}
+
+.ambient-shadow {
+  box-shadow: 0 10px 30px -10px rgba(89, 97, 80, 0.06);
+}
+
+.pressed-state:active {
+  transform: scale(0.98);
+  box-shadow: 0 10px 20px -10px rgba(89, 97, 80, 0.04);
+}
+
+@keyframes draw-line {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.animated-strikethrough {
+  position: relative;
+  display: inline-block;
+}
+
+.animated-strikethrough::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 2px;
+  background-color: var(--color-outline);
+  animation: draw-line 0.4s ease-out forwards;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+.filled-icon {
+  font-variation-settings: 'FILL' 1 !important;
+}
+
+/* Success animations */
+@keyframes float-up {
+  0% { transform: translateY(10px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-float-up {
+  animation: float-up 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes soft-pulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(184, 193, 172, 0.4); }
+  70% { transform: scale(1.02); box-shadow: 0 0 0 15px rgba(184, 193, 172, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(184, 193, 172, 0); }
+}
+
+.task-completed-pulse {
+  animation: soft-pulse 1.5s ease-out;
+}
